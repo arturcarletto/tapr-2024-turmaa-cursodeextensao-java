@@ -1,5 +1,8 @@
-package external.valueobject;
+package br.univille.microservcursodeextensao.external.valueobject;
 
+import lombok.Data;
+
+@Data
 public class Email {
 
     private final String email;
