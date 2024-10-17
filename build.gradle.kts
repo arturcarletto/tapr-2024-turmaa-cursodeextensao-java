@@ -37,3 +37,10 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.withType<JavaExec> {
+	jvmArgs(
+		"-Djavax.net.ssl.trustStore=/home/ideaprojects/tapr-2024-turmaa-cursodeextensao-java/native.jks",
+		"-Djavax.net.ssl.trustStorePassword=univille"
+	)
+}
