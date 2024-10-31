@@ -7,13 +7,13 @@ public class ReservedClassroom {
 
     private final UUID classroom;
 
-    private final LocalDateTime ReservedStart;
+    private final LocalDateTime ReserveStart;
 
-    private final LocalDateTime ReservedEnd;
+    private final LocalDateTime ReserveEnd;
 
-    public ReservedClassroom(UUID classroom, LocalDateTime ReservedStart, LocalDateTime ReservedEnd) {
+    public ReservedClassroom(UUID classroom, LocalDateTime ReserveStart, LocalDateTime ReserveEnd) {
         this.classroom = classroom;
-        this.ReservedStart = ReservedStart;
-        this.ReservedEnd = ReservedEnd;
+        this.ReserveStart = ReserveStart;
+        this.ReserveEnd = ReserveEnd;
     }
 }
