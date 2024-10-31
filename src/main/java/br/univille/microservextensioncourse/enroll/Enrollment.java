@@ -1,9 +1,9 @@
-package br.univille.microservcursodeextensao.matricula;
-
-import br.univille.microservcursodeextensao.matricula.valueobject.EnrollmentStatus;
+package br.univille.microservextensioncourse.enroll;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
+
+import br.univille.microservextensioncourse.enroll.valueobject.EnrollmentStatus;
 
 public class Enrollment {
 

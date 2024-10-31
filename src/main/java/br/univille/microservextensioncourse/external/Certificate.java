@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.external;
+package br.univille.microservextensioncourse.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-import br.univille.microservcursodeextensao.course.valueobject.CourseName;
+import br.univille.microservextensioncourse.course.valueobject.CourseName;
 
 @AllArgsConstructor
 @NoArgsConstructor

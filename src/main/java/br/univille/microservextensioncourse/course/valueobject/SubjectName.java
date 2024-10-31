@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.course.valueobject;
+package br.univille.microservextensioncourse.course.valueobject;
 
 import lombok.Data;
 

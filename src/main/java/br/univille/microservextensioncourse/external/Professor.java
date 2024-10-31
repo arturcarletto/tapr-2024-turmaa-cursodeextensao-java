@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.external;
+package br.univille.microservextensioncourse.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

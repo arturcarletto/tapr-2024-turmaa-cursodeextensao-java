@@ -1,15 +1,16 @@
-package br.univille.microservcursodeextensao.external;
+package br.univille.microservextensioncourse.external;
 
 
-import br.univille.microservcursodeextensao.external.valueobject.CPF;
-import br.univille.microservcursodeextensao.external.valueobject.Email;
-import br.univille.microservcursodeextensao.external.valueobject.Name;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
+
+import br.univille.microservextensioncourse.external.valueobject.CPF;
+import br.univille.microservextensioncourse.external.valueobject.Email;
+import br.univille.microservextensioncourse.external.valueobject.Name;
 
 @AllArgsConstructor
 @NoArgsConstructor

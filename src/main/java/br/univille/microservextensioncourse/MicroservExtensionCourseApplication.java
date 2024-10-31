@@ -1,13 +1,13 @@
-package br.univille.microservcursodeextensao;
+package br.univille.microservextensioncourse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroservCursoDeExtensaoApplication {
+public class MicroservExtensionCourseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservCursoDeExtensaoApplication.class, args);
+		SpringApplication.run(MicroservExtensionCourseApplication.class, args);
 	}
 
 }

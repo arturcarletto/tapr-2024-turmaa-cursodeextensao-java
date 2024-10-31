@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.matricula.valueobject;
+package br.univille.microservextensioncourse.enroll.valueobject;
 
 public enum EnrollmentStatus {
 
