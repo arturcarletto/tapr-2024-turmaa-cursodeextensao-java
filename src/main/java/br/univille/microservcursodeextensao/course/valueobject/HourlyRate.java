@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.curso.valueobject;
+package br.univille.microservcursodeextensao.course.valueobject;
 
 import java.util.Objects;
 

@@ -1,7 +1,5 @@
-package br.univille.microservcursodeextensao.curso;
+package br.univille.microservcursodeextensao.course;
 
-import br.univille.microservcursodeextensao.curso.valueobject.CourseDescription;
-import br.univille.microservcursodeextensao.curso.valueobject.CourseName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +8,9 @@ import lombok.Setter;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
+
+import br.univille.microservcursodeextensao.course.valueobject.CourseDescription;
+import br.univille.microservcursodeextensao.course.valueobject.CourseName;
 
 @AllArgsConstructor
 @NoArgsConstructor

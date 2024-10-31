@@ -1,12 +1,13 @@
 package br.univille.microservcursodeextensao.external;
 
-import br.univille.microservcursodeextensao.curso.valueobject.CourseName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
+
+import br.univille.microservcursodeextensao.course.valueobject.CourseName;
 
 @AllArgsConstructor
 @NoArgsConstructor
