@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MicroservCursoDeExtensaoApplication",
+            "request": "launch",
+            "mainClass": "br.univille.microservcursodeextensao.MicroservCursoDeExtensaoApplication",
+            "projectName": "microservcursodeextensao"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservcolegioApplication<microservcursodeextensao>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.microservcursodeextensao.MicroservCursoDeExtensaoApplication",
+            "projectName": "microservcolegio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": [
+                "-Djavax.net.ssl.trustStore=/workspaces/tapr-2024-turmaa-cursodeextensao-java/native.jks",
+                "-Djavax.net.ssl.trustStorePassword=univille"
+            ]
+        }
+    ]
+}
