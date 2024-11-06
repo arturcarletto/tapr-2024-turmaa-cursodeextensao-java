@@ -4,10 +4,23 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 import br.univille.microservcursodeextensao.enroll.valueobject.EnrollmentStatus;
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 
+@Container(containerName = "enrollment", autoCreateContainer = true)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Enrollment {
 
-    private UUID id;
+    @Id
+    @PartitionKey
+    @GeneratedValue
+    private String id;
 
     private UUID student;
 

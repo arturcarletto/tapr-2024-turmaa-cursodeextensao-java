@@ -53,3 +53,10 @@ tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
+    jvmArgs = listOf(
+        "-Djavax.net.ssl.trustStore=/workspaces/tapr-2024-turmaa-cursodeextensao-java/native.jks",
+        "-Djavax.net.ssl.trustStorePassword=univille"
+    )
+}

@@ -1,44 +1,51 @@
 package br.univille.microservcursodeextensao.subject;
 
 
+import br.univille.microservcursodeextensao.subject.valueobject.HourlyRate;
+import br.univille.microservcursodeextensao.subject.valueobject.SubjectName;
+import br.univille.microservcursodeextensao.subject.valueobject.Syllabus;
+import br.univille.microservcursodeextensao.subject.valueobject.Workload;
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import br.univille.microservcursodeextensao.subject.valueobject.HourlyRate;
-import br.univille.microservcursodeextensao.subject.valueobject.SubjectName;
-import br.univille.microservcursodeextensao.subject.valueobject.Syllabus;
-import br.univille.microservcursodeextensao.subject.valueobject.Workload;
-
+@Container(containerName = "subject", autoCreateContainer = true)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Subject {
 
-    private final SubjectName name;
+    @Id
+    @PartitionKey
+    @GeneratedValue
+    private String id;
 
-    private final UUID professor;
+    private SubjectName name;
 
-    private final Syllabus syllabus;
+    private UUID professor;
 
-    private final Workload hour;
+    private Syllabus syllabus;
 
-    private final HourlyRate value;
+    private Workload hour;
 
-    private final List<ZonedDateTime> days;
+    private HourlyRate value;
 
-    private final LocalTime start;
+    private List<ZonedDateTime> days;
 
-    private final LocalTime end;
+    private LocalTime start;
 
-    public Subject(SubjectName name, UUID professor, Syllabus syllabus, Workload hour, HourlyRate value, List<ZonedDateTime> days, LocalTime start, LocalTime end) {
-        this.name = name;
-        this.professor = professor;
-        this.syllabus = syllabus;
-        this.hour = hour;
-        this.value = value;
-        this.days = days;
-        this.start = start;
-        this.end = end;
-    }
+    private LocalTime end;
 
 
 }

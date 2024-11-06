@@ -23,5 +23,4 @@ public class Classroom {
 
     private boolean hasComputer;
 
-
 }
