@@ -18,7 +18,7 @@ import br.univille.microservcursodeextensao.external.valueobject.Name;
 @Setter
 public class Student {
 
-    private UUID id;
+    private String id;
 
     private Name name;
 

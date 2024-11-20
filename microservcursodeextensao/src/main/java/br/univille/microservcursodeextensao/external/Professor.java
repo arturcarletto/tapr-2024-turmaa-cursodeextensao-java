@@ -1,11 +1,10 @@
 package br.univille.microservcursodeextensao.external;
 
+import br.univille.microservcursodeextensao.external.valueobject.Name;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,8 +12,8 @@ import java.util.UUID;
 @Setter
 public class Professor {
 
-    private UUID id;
+    private String id;
 
-    private String name;
+    private Name name;
 
 }

@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 public class Classroom {
 
-    private UUID id;
+    private String id;
 
     private char block;
 

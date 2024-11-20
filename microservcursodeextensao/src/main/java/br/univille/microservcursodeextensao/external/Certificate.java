@@ -15,9 +15,9 @@ import br.univille.microservcursodeextensao.course.valueobject.CourseName;
 @Setter
 public class Certificate {
 
-    private UUID id;
+    private String id;
 
-    private UUID student;
+    private String student;
 
     private int hours;
 

@@ -31,11 +31,11 @@ public class Course {
 
     private CourseDescription courseDescription;
 
-    private List<UUID> enrolledStudents;
+    private List<String> enrolledStudents;
 
-    private List<UUID> subjects;
+    private List<String> subjects;
 
-    private List<UUID> reservedClassrooms;
+    private List<String> reservedClassrooms;
 
     private ZonedDateTime startDate;
 

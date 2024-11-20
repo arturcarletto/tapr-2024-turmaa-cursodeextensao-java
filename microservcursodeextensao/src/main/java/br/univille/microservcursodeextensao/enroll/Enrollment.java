@@ -10,7 +10,7 @@ import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-@Container(containerName = "enrollment", autoCreateContainer = true)
+@Container(containerName = "enrollment")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,14 +22,14 @@ public class Enrollment {
     @GeneratedValue
     private String id;
 
-    private UUID student;
+    private String student;
 
-    private UUID course;
+    private String course;
 
     private EnrollmentStatus enrollmentStatus;
 
     private ZonedDateTime enrollmentDate;
 
-    private UUID certificate;
+    private String certificate;
 
 }

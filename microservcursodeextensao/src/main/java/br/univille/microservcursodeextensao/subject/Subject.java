@@ -19,7 +19,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Container(containerName = "subject", autoCreateContainer = true)
+@Container(containerName = "subject")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,7 +33,7 @@ public class Subject {
 
     private SubjectName name;
 
-    private UUID professor;
+    private String professor;
 
     private Syllabus syllabus;
 
