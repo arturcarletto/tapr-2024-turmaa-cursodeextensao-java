@@ -59,6 +59,11 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     }
 
     @Override
+    public Enrollment updateEnrollment(Enrollment enrollment) {
+        return enrollmentRepository.save(enrollment);
+    }
+
+    @Override
     public Enrollment deleteEnrollment(String id) {
         Enrollment enrollment = getEnrollment(id);
         enrollmentRepository.deleteById(id);
