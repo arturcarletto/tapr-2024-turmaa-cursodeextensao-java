@@ -1,7 +1,11 @@
 package br.univille.microservcursodeextensao.course;
 
+import io.dapr.Topic;
+import io.dapr.client.domain.CloudEvent;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +41,13 @@ public class CourseController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Course> deleteCourse(@PathVariable String id) {
         return ResponseEntity.ok(courseService.deleteCourse(id));
+    }
+
+    @Topic(name = "${app.component.topic.course}", pubsubName = "${app.component.service}")
+    @PostMapping(path = "/event", consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<Course> updateCourse(@RequestBody(required = false) CloudEvent<Course> cloudEvent) {
+        val course = cloudEvent.getData();
+        return ResponseEntity.ok(courseService.updateCourse(course));
     }
 
 }

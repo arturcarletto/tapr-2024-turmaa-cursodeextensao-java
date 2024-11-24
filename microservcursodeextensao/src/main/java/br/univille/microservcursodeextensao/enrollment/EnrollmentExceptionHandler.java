@@ -1,8 +1,8 @@
-package br.univille.microservcursodeextensao.enroll;
+package br.univille.microservcursodeextensao.enrollment;
 
 import br.univille.microservcursodeextensao.api.ExceptionResponse;
-import br.univille.microservcursodeextensao.enroll.exception.EnrollmentNotFoundException;
-import br.univille.microservcursodeextensao.enroll.exception.InvalidEnrollmentException;
+import br.univille.microservcursodeextensao.enrollment.exception.EnrollmentNotFoundException;
+import br.univille.microservcursodeextensao.enrollment.exception.InvalidEnrollmentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

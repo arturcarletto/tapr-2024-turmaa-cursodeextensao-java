@@ -1,9 +1,8 @@
-package br.univille.microservcursodeextensao.enroll;
+package br.univille.microservcursodeextensao.enrollment;
 
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
-import br.univille.microservcursodeextensao.enroll.valueobject.EnrollmentStatus;
+import br.univille.microservcursodeextensao.enrollment.valueobject.EnrollmentStatus;
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;

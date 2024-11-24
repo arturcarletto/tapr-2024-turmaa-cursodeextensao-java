@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.enroll.exception;
+package br.univille.microservcursodeextensao.enrollment.exception;
 
 public class EnrollmentNotFoundException extends RuntimeException {
 

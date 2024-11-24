@@ -6,17 +6,38 @@ import br.univille.microservcursodeextensao.subject.SubjectService;
 import br.univille.microservcursodeextensao.subject.exception.InvalidSubjectException;
 import br.univille.microservcursodeextensao.subject.exception.SubjectNotFoundException;
 import com.azure.cosmos.implementation.guava25.collect.Lists;
-import lombok.RequiredArgsConstructor;
+import io.dapr.client.DaprClient;
+import io.dapr.client.DaprClientBuilder;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class SubjectServiceImpl implements SubjectService {
 
     private final SubjectRepository subjectRepository;
+
+    private final String topicName;
+
+    private final String pubSubName;
+
+    private final DaprClient daprClient;
+
+    public SubjectServiceImpl(
+            SubjectRepository subjectRepository,
+            @Value("${app.component.topic.subject}") String topicName,
+            @Value("${app.component.service}") String pubSubName
+    ) {
+        this.subjectRepository = subjectRepository;
+        this.topicName = topicName;
+        this.pubSubName = pubSubName;
+
+        this.daprClient = new DaprClientBuilder().build();
+    }
 
     @Override
     public Subject createSubject(Subject subject) {
@@ -28,7 +49,9 @@ public class SubjectServiceImpl implements SubjectService {
             throw new InvalidSubjectException("Subject ID must be null to create a new subject");
         }
 
-        return subjectRepository.save(subject);
+        val savedSubject = subjectRepository.save(subject);
+        publishSubjectUpdate(savedSubject);
+        return savedSubject;
     }
 
     @Override
@@ -54,7 +77,10 @@ public class SubjectServiceImpl implements SubjectService {
         existingSubject.setStart(subject.getStart());
         existingSubject.setEnd(subject.getEnd());
 
-        return subjectRepository.save(subject);
+        val savedSubject = subjectRepository.save(subject);
+        publishSubjectUpdate(savedSubject);
+
+        return savedSubject;
     }
 
     @Override
@@ -72,6 +98,12 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<Subject> getAllSubjects() {
         return Lists.newArrayList(subjectRepository.findAll());
+    }
+
+    private void publishSubjectUpdate(Subject subject) {
+        daprClient
+                .publishEvent(pubSubName, topicName, subject)
+                .block(Duration.ofSeconds(10));
     }
 
 }

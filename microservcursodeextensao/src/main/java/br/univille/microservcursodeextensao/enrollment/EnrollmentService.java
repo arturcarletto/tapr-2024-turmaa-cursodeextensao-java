@@ -1,4 +1,4 @@
-package br.univille.microservcursodeextensao.enroll;
+package br.univille.microservcursodeextensao.enrollment;
 
 import java.util.List;
 

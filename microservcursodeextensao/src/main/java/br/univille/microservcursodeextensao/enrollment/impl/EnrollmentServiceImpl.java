@@ -1,22 +1,42 @@
-package br.univille.microservcursodeextensao.enroll.impl;
+package br.univille.microservcursodeextensao.enrollment.impl;
 
-import br.univille.microservcursodeextensao.enroll.Enrollment;
-import br.univille.microservcursodeextensao.enroll.EnrollmentRepository;
-import br.univille.microservcursodeextensao.enroll.EnrollmentService;
-import br.univille.microservcursodeextensao.enroll.exception.EnrollmentNotFoundException;
-import br.univille.microservcursodeextensao.enroll.exception.InvalidEnrollmentException;
+import br.univille.microservcursodeextensao.enrollment.Enrollment;
+import br.univille.microservcursodeextensao.enrollment.EnrollmentRepository;
+import br.univille.microservcursodeextensao.enrollment.EnrollmentService;
+import br.univille.microservcursodeextensao.enrollment.exception.EnrollmentNotFoundException;
+import br.univille.microservcursodeextensao.enrollment.exception.InvalidEnrollmentException;
 import com.azure.cosmos.implementation.guava25.collect.Lists;
-import lombok.RequiredArgsConstructor;
+import io.dapr.client.DaprClient;
+import io.dapr.client.DaprClientBuilder;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class EnrollmentServiceImpl implements EnrollmentService {
 
     private final EnrollmentRepository enrollmentRepository;
+
+    private final String topicName;
+
+    private final String pubSubName;
+
+    private final DaprClient daprClient;
+
+    public EnrollmentServiceImpl(
+            EnrollmentRepository enrollmentRepository,
+            @Value("${app.component.topic.enrollment}") String topicName,
+            @Value("${app.component.service}") String pubSubName
+    ) {
+        this.enrollmentRepository = enrollmentRepository;
+        this.topicName = topicName;
+        this.pubSubName = pubSubName;
+        this.daprClient = new DaprClientBuilder().build();
+    }
 
     @Override
     public Enrollment createEnrollment(Enrollment enrollment) {
@@ -28,8 +48,11 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             throw new InvalidEnrollmentException("Enrollment ID must be null to create a new enrollment");
         }
 
-        return enrollmentRepository.save(enrollment);
+        val savedEnrollment = enrollmentRepository.save(enrollment);
+        publishEnrollmentUpdate(savedEnrollment);
+        return savedEnrollment;
     }
+
 
     @Override
     public Enrollment getEnrollment(String id) {
@@ -55,7 +78,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         existingEnrollment.setStudent(enrollment.getStudent());
         existingEnrollment.setCourse(enrollment.getCourse());
 
-        return enrollmentRepository.save(enrollment);
+        val savedEnrollment = enrollmentRepository.save(enrollment);
+        publishEnrollmentUpdate(savedEnrollment);
+        return savedEnrollment;
     }
 
     @Override
@@ -73,6 +98,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Override
     public List<Enrollment> getAllEnrollments() {
         return Lists.newArrayList(enrollmentRepository.findAll());
+    }
+
+    private void publishEnrollmentUpdate(Enrollment enrollment) {
+        daprClient
+                .publishEvent(pubSubName, topicName, enrollment)
+                .block(Duration.ofSeconds(10));
     }
 
 }
