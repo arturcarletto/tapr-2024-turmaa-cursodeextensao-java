@@ -1,13 +1,16 @@
 package br.univille.microservcursodeextensao.enrollment;
 
-import java.time.ZonedDateTime;
-
 import br.univille.microservcursodeextensao.enrollment.valueobject.EnrollmentStatus;
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
+
+import java.time.ZonedDateTime;
 
 @Container(containerName = "enrollment")
 @Getter

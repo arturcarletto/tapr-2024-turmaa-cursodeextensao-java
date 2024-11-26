@@ -1,6 +1,5 @@
 package br.univille.microservcursodeextensao.enrollment;
 
-import br.univille.microservcursodeextensao.course.Course;
 import io.dapr.Topic;
 import io.dapr.client.domain.CloudEvent;
 import jakarta.validation.Valid;

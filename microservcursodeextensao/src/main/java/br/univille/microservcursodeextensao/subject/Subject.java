@@ -17,7 +17,6 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Container(containerName = "subject")
 @Getter
