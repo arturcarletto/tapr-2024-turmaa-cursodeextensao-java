@@ -3,6 +3,6 @@ common:
   resourcesPath: ./components/
 apps:
   - appID: tapr-2024-cursodeextensao-java
-    appDirPath: ./build/
+    appDirPath: ./build/libs/
     appPort: 8080
     command: ["java", "-jar", "microservcursodeextensao-0.0.1-SNAPSHOT.jar"]
